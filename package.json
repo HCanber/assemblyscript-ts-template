@@ -2,5 +2,8 @@
   "name": "assemblyscript-ts-template",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "assemblyscript": "^0.26.3"
+  }
 }
