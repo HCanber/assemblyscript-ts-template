@@ -5,13 +5,16 @@
   "license": "MIT",
   "devDependencies": {
     "assemblyscript": "^0.26.3",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "vite": "^4.0.0",
+    "vite-plugin-top-level-await": "^1.2.2",
+    "vite-tsconfig-paths": "^4.0.3"
   },
   "type": "module",
   "exports": {
     ".": {
-      "import": "./build/release.js",
-      "types": "./build/release.d.ts"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "scripts": {
@@ -19,8 +22,11 @@
     "asbuild:release": "asc assembly/index.ts --target release",
     "asbuild": "npm run asbuild:debug && npm run asbuild:release",
     "tsbuild": "tsc --project lib/",
-    "build": "npm run asbuild && npm run tsbuild",
+    "vitebuild": "vite build && cp build/types/* dist/",
+    "build": "npm run asbuild && npm run tsbuild && npm run vitebuild",
+    "clean": "rm -rf build dist",
     "test": "node tests",
-    "start": "npx serve ."
+    "start": "vite",
+    "preview": "vite preview"
   }
 }
