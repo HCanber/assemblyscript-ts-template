@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <script type="module">
-import { add } from "./build/release.js";
-document.body.innerText = add(1, 2);
+import { add } from "./build/wasm/release.js";
+import { hello } from "./build/lib/index.js";
+document.body.innerText = hello() + " 1+2=" + add(1, 2);
 </script>
 </head>
 <body></body>
