@@ -9,11 +9,13 @@
     "asbuild:release": "asc assembly/index.ts --target release",
     "asbuild": "npm run asbuild:debug && npm run asbuild:release",
     "tsbuild": "tsc --project lib/",
-    "vitebuild": "vite build && cp build/types/* dist/",
+    "vitebuild": "vite build",
+    "vitebuild-lib": "vite build --config vite.config.lib.ts",
     "build": "npm run asbuild && npm run tsbuild && npm run vitebuild",
+    "build-lib": "npm run asbuild && npm run tsbuild && npm run vitebuild-lib && cp -r build/types/lib/* dist/ && rm dist/page-start.d.ts",
     "clean": "rm -rf build dist",
     "test": "node tests",
-    "start": "vite",
+    "start": "vite --config vite.config.dev.ts",
     "preview": "vite preview"
   },
   "exports": {
@@ -22,6 +24,17 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "files": [
+    "as-minimal-portable/index*",
+    "assembly/**/*.ts",
+    "build/wasm/release.d.ts",
+    "build/wasm/release.js",
+    "build/wasm/release.wasm.map",
+    "build/wasm/release.wasm",
+    "dist",
+    "lib/**/*.ts",
+    "shared/**/*.ts"
+  ],
   "devDependencies": {
     "assemblyscript": "^0.26.3",
     "typescript": "^4.9.4",
