@@ -7,15 +7,21 @@
   "scripts": {
     "asbuild:debug": "asc assembly/index.ts --target debug",
     "asbuild:release": "asc assembly/index.ts --target release",
-    "asbuild": "npm run asbuild:debug && npm run asbuild:release",
+    "asbuild": "yarn run asbuild:debug && yarn run asbuild:release",
     "astest": "asp --verbose --config as-pect.config.js --as-config as-pect.asconfig.json",
-    "tsbuild": "tsc --project lib/",
     "vitebuild": "vite build",
     "vitebuild-lib": "vite build --config vite.config.lib.ts",
-    "build": "npm run asbuild && npm run tsbuild && npm run vitebuild",
-    "build-lib": "npm run asbuild && npm run tsbuild && npm run vitebuild-lib && cp -r build/types/lib/* dist/ && rm dist/page-start.d.ts",
-    "clean": "rm -rf build dist",
-    "test": "npm run astest",
+    "libbuild": "tsc --project lib/",
+    "libtest": "vitest run --config vitest.lib.config.ts",
+    "libtest-watch": "vitest --config vitest.lib.config.ts",
+    "libtest-coverage": "vitest run --coverage --config vitest.lib.config.ts",
+    "sharedtest": "vitest run --config vitest.shared.config.ts",
+    "sharedtest-watch": "vitest --config vitest.shared.config.ts",
+    "sharedtest-coverage": "vitest run --coverage --config vitest.shared.config.ts",
+    "build": "yarn run asbuild && yarn run tsbuild && yarn run vitebuild",
+    "build-lib": "yarn run asbuild && yarn run tsbuild && yarn run vitebuild-lib && cp -r build/types/lib/* dist/ && rm dist/page-start.d.ts",
+    "clean": "rm -rf build dist coverage",
+    "test": "yarn run astest && yarn run libtest && yarn run sharedtest",
     "start": "vite --config vite.config.dev.ts",
     "preview": "vite preview"
   },
@@ -38,10 +44,12 @@
   ],
   "devDependencies": {
     "@as-pect/cli": "^8.0.1",
+    "@vitest/coverage-c8": "^0.27.1",
     "assemblyscript": "^0.26.3",
     "typescript": "^4.9.4",
     "vite": "^4.0.0",
     "vite-plugin-top-level-await": "^1.2.2",
-    "vite-tsconfig-paths": "^4.0.3"
+    "vite-tsconfig-paths": "^4.0.3",
+    "vitest": "^0.27.1"
   }
 }

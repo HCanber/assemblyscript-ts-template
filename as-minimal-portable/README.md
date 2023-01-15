@@ -21,7 +21,10 @@ If you miss anything, uncomment what you need in these files:
 - `index.d.ts` contains the type definitions
 - `index.js` contains implementations for javascript
 
-If you want to use the full portable library, instead of referencing theese files, reference `assemblyscript/std/portable`
+If you want to use the full portable library, reference `assemblyscript/std/portable`:
 
-- in `shared/tsconfig.json`, set `types` to `types: ["assemblyscript/std/portable"]`
-- in `lib/index.ts` import: `import "assemblyscript/std/portable/index.js"`
+| File                                                  | Change                                          |
+| ----------------------------------------------------- | ----------------------------------------------- |
+| [`shared/tsconfig.json`](../shared/tsconfig.json)     | `types: ["assemblyscript/std/portable"]`        |
+| [`lib/index.ts`](../lib/index.ts)                     | `import "assemblyscript/std/portable/index.js"` |
+| [`vitest.shared.setup.ts`](../vitest.shared.setup.ts) | `import "assemblyscript/std/portable/index.js"` |

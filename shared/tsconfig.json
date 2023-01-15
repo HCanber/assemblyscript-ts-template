@@ -1,7 +1,6 @@
 {
   // See https://aka.ms/tsconfig to read more about this file
 
-  // "extends": "assemblyscript/std/portable.json",
   "extends": "assemblyscript/tsconfig-base.json",
   "compilerOptions": {
     "target": "esnext",
