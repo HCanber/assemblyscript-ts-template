@@ -47,20 +47,22 @@ See the note below under [Shared](#shared) regarding the [`shared/`](shared) fol
 
 #### Test: Assembyscript
 
-To run Assemblyscript tests for the assemblyscript folder, execute:
+To run Assemblyscript tests for the assemblyscript folder, execute one of the following:
 
 ```sh
 yarn astest
+yarn astest-watch
 ```
 
 It will run tests in [`assembly/`](assembly) and [`shared/`](shared) folders using [as-pect](https://as-pect.gitbook.io/as-pect/).
 
 #### Build: Assembyscript
 
-To build the assemblyscript folder, execute:
+To build the assemblyscript folder, execute one of the following:
 
 ```sh
 yarn asbuild
+yarn asbuild-watch
 ```
 
 The code will be built to the [`build/wasm/`](build/wasm) folder.
@@ -116,13 +118,16 @@ This project can be compiled to a static web page or a node module.
 
 #### Compile to static web
 
-To compile the project to a static web page, execute:
+To compile the project to a static web page, execute one of the following:
 
 ```sh
 yarn build
+yarn build-watch
 ```
 
+To compile to a library, execute one of the following:
+
 ```sh
-yarn asbuild
-yarn start
+yarn build-lib
+yarn build-lib-watch
 ```
