@@ -1,0 +1,8 @@
+build/
+dist/
+coverage/
+as-minimal-portable/index.*
+node_modules/
+*.orig
+.pnp.*
+.yarn/*
