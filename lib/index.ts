@@ -1,5 +1,9 @@
-import { add } from "wasm/release.js";
+// import "assemblyscript/std/portable/index.js";  // To use full portable stdlib, import this insetad of as-minimal-portable
+import "../as-minimal-portable";
+
+import { calculate } from "wasm/release.js";
+import { halfOf } from "shared";
 
 export function hello(): string {
-  return `Hello, 1+2=${add(1, 2)}!`;
+  return `Hello, result=${halfOf(calculate(21, 2))}!`;
 }

@@ -1,5 +1,5 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
+  // See https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     "target": "ES2022", // Set the JavaScript language version for emitted JavaScript and include compatible library declarations.
     "module": "ES2022", // Specify what module code is generated.
@@ -10,7 +10,8 @@
     "sourceMap": true, // Generates corresponding '.map' sourcemap file.
     "declaration": true, // Generates corresponding '.d.ts' type definition file.
     "paths": {
-      "wasm/*": ["../build/wasm/*"]
+      "wasm/*": ["../build/wasm/*"],
+      "shared": ["../shared/index.ts"]
     },
     "types": ["vite/client"],
 
@@ -20,6 +21,7 @@
     "forceConsistentCasingInFileNames": true, // Ensure that casing is correct in imports.
     "useDefineForClassFields": true,
     "resolveJsonModule": true,
+    "preserveConstEnums": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "noImplicitReturns": true,
