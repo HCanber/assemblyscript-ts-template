@@ -1,0 +1,33 @@
+// See https://as-pect.gitbook.io/as-pect/cli-configuration
+export default {
+  /**
+   * A set of globs passed to the glob package that qualify typescript files for testing.
+   */
+  entries: ["assembly/**/*.test.ts", "shared/**/*.test.ts"],
+  /**
+   * A set of globs passed to the glob package that quality files to be added to each test.
+   */
+  include: ["assembly/**/*.include.ts", "shared/**/*.include.ts"],
+  /**
+   * A set of regexp that will disclude source files from testing.
+   */
+  disclude: [/node_modules/],
+  /**
+   * Add your required AssemblyScript imports here.
+   */
+  async instantiate(memory, createImports, instantiate, binary) {
+    let instance; // Imports can reference this
+    const myImports = {
+      env: { memory },
+      // put your web assembly imports here, and return the module promise
+    };
+    instance = instantiate(binary, createImports(myImports));
+    return instance;
+  },
+  /** Enable code coverage by uncommenting the following line. */
+  // coverage: ["assembly/**/*.ts", "shared/**/*.ts"],
+  /**
+   * Specify if the binary wasm file should be written to the file system.
+   */
+  outputBinary: false,
+};

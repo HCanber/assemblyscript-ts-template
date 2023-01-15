@@ -2,6 +2,7 @@
   "extends": "assemblyscript/std/assembly.json",
   "include": ["./**/*.ts", "../shared/**/*.ts"],
   "compilerOptions": {
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "types": ["@as-pect/assembly/types/as-pect", "assemblyscript/std/assembly"]
   }
 }

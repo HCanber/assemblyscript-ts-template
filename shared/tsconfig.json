@@ -8,8 +8,9 @@
     "module": "commonjs",
     "allowJs": true,
     "types": [
-      "../as-minimal-portable"
-      // "assemblyscript/std/portable" // To use the full portable library, uncomment this line and remove the above line.
+      // "assemblyscript/std/portable" // To use the full portable library, uncomment this line and remove the line below.
+      "../as-minimal-portable",
+      "@as-pect/assembly/types/as-pect"
     ],
     "lib": ["esnext", "esnext.string"]
   }
