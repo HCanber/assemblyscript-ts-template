@@ -39,6 +39,24 @@ Assemblyscript changes (in [`assembly/`](assembly) and [`shared/`](shared) folde
 yarn install
 ```
 
+### Automatically rebuild and test on save
+
+To rebuild the WASM and run all tests on save, execute:
+
+```sh
+yarn dev
+```
+
+This will run the following commands in parallel:
+
+```sh
+yarn asbuild:debug-watch
+yarn astest-watch
+yarn libtest-watch
+yarn sharedtest-watch
+yarn start
+```
+
 ### Assembyscript
 
 Write Assemblyscript code and tests in [`assembly/`](assembly) and [`shared/`](shared) folders.

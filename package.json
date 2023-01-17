@@ -30,7 +30,8 @@
     "clean": "shx rm -rf build dist coverage",
     "test": "yarn run astest && yarn run libtest && yarn run sharedtest",
     "start": "vite",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev": "yarn run asbuild:debug && concurrently -p name -c \"bgCyan,bgYellow,bgMagenta,bgBlue,bgGray\" -n \"wasm ,wasmT,libT ,sharT,vite \" \"cross-env NO_CLS=true yarn run asbuild:debug-watch\" \"cross-env NO_CLS=true yarn run astest-watch --no-logo\" \"yarn run libtest-watch\" \"yarn run sharedtest-watch\" \"yarn run start\""
   },
   "exports": {
     ".": {
@@ -53,6 +54,7 @@
     "@as-pect/cli": "^8.0.1",
     "@vitest/coverage-c8": "^0.27.1",
     "assemblyscript": "^0.26.3",
+    "concurrently": "^7.6.0",
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.20",
     "shx": "^0.3.4",
