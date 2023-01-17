@@ -1,3 +1,5 @@
+// This is the configuration for the website build.
+
 import { defineConfig } from "vite";
 import { baseConfig } from "./vite.config.base";
 

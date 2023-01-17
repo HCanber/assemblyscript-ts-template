@@ -29,7 +29,7 @@
     "build-lib": "yarn run asbuild && yarn run libbuild && yarn run vitebuild-lib && shx cp -r build/types/lib/* dist/ && shx rm dist/page-start.d.ts",
     "clean": "shx rm -rf build dist coverage",
     "test": "yarn run astest && yarn run libtest && yarn run sharedtest",
-    "start": "vite --config vite.config.dev.ts",
+    "start": "vite",
     "preview": "vite preview"
   },
   "exports": {

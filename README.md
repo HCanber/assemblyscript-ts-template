@@ -116,7 +116,7 @@ The shared folder is built and embedded in the wasm when used in the Assemblyscr
 
 This project can be compiled to a static web page or a node module.
 
-#### Compile to static web
+#### Compile to a static web
 
 To compile the project to a static web page, execute one of the following:
 
@@ -125,9 +125,20 @@ yarn build
 yarn build-watch
 ```
 
+#### Compile to a library
+
 To compile to a library, execute one of the following:
 
 ```sh
 yarn build-lib
 yarn build-lib-watch
 ```
+
+#### Debug WASM vs Release WASM
+
+By default the debug version of the WASM is used.
+The version can be controlled by setting environment variable `WASM=release` or `WASM=debug`.
+
+If environment variable `NODE_ENV=production` is set, or `CI` is set, and `WASM` hasn't been set, then the release version of the WASM is automatically used.
+
+When compiling to a static web or library, the release version of the WASM is used, as vite sets `NODE_ENV=production` by default.
