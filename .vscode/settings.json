@@ -1,0 +1,12 @@
+{
+  // Uncomment the following lines to use the custom formatter for AssemblyScript
+  // "[typescript]": {
+  //   "editor.defaultFormatter": "jkillian.custom-local-formatters"
+  // },
+  // "customLocalFormatters.formatters": [
+  //   {
+  //     "command": "node_modules/.bin/as-prettier-stdin \"${file}\" --ignoreFile=.as-prettierignore",
+  //     "languages": ["typescript"]
+  //   }
+  // ]
+}

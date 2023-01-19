@@ -160,3 +160,47 @@ The version can be controlled by setting environment variable `WASM=release` or 
 If environment variable `NODE_ENV=production` is set, or `CI` is set, and `WASM` hasn't been set, then the release version of the WASM is automatically used.
 
 When compiling to a static web or library, the release version of the WASM is used, as vite sets `NODE_ENV=production` by default.
+
+## Optional: VS Code Setup to format Assemblyscript code
+
+Assemblyscript can be formatted using [prettier](https://prettier.io/) as long as decorators, such as `@inline`, on top level functions and variables are used. Typescript only allows them on classes and its members. This is an example that prettier can't handle:
+
+```ts
+// @ts-ignore: decorator
+@inline
+export function add(a: i32, b: i32): i32 {
+  return a + b;
+}
+```
+
+To be able to format Assemblyscript code in VS Code on save, follow these steps to install a custom formatter that tricks prettier into thinking the code is Typescript so it can format it correctly.
+
+- Install https://marketplace.visualstudio.com/items?itemName=jkillian.custom-local-formatters in VS Code
+
+- Install the formatter for assembly script
+
+  **Yarn 1:**
+
+  ```sh
+  yarn add -D prettier https://github.com/HCanber/assemblyscript-prettier
+  ```
+
+  **Yarn 2+:**
+
+  ```sh
+  yarn add -D prettier assemblyscript-prettier@github:HCanber/assemblyscript-prettier
+  ```
+
+  **NPM:**
+
+  ```sh
+  npm install -D prettier git+https://github.com/HCanber/assemblyscript-prettier.git
+  ```
+
+- Open [.vscode/settings.json](.vscode/settings.json) and uncomment the lines for the formatter
+
+Now when assemblyscript (and typescript) code is saved, it will be formatted using the newly installed formatter
+
+## Optional: Format code on commits
+
+Follow the steps for [Prettier's Pre-commit Hook](https://prettier.io/docs/en/precommit.html) but change the `prettier` command to `as-prettier` instead.
