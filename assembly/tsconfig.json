@@ -3,6 +3,7 @@
   "include": ["./**/*.ts", "../shared/**/*.ts"],
   "compilerOptions": {
     "baseUrl": "./",
-    "types": ["@as-pect/assembly/types/as-pect", "assemblyscript/std/assembly"]
+    "types": ["@as-pect/assembly/types/as-pect", "assemblyscript/std/assembly"],
+    "experimentalDecorators": true
   }
 }
