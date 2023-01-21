@@ -1,6 +1,6 @@
 # Minimal portable library
 
-This folder contains minimal type definitions for writing portable code, i.e. code that can be used in assemblyscript and typescript.
+This folder contains minimal type definitions for writing portable code, i.e. code that can be used in AssemblyScript and TypeScript.
 Only support for these types have been kept:
 
 - `i8`
@@ -21,7 +21,7 @@ If you miss anything, uncomment what you need in these files:
 - `index.d.ts` contains the type definitions
 - `index.js` contains implementations for javascript
 
-If you want to use the full portable library, reference `assemblyscript/std/portable`:
+If you want to use the full portable library, reference `assemblyscript/std/portable`. Update:
 
 | File                                                  | Change                                          |
 | ----------------------------------------------------- | ----------------------------------------------- |

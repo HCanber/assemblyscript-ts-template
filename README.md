@@ -1,11 +1,11 @@
-# Starter for Assemblyscript + Typescript
+# Starter for AssemblyScript + TypeScript
 
-This is a starter project for developing Assemblyscript and Typescript code in the same project. It supports sharing code between the two languages, and running tests for both languages using [as-pect](https://as-pect.gitbook.io/as-pect/) and [vitest](https://vitest.dev/).
+This is a starter project for creating WASMs using AssemblyScript and interacting with it using TypeScript. Code can be shared between the two languages and it comes with two test frameworks [as-pect](https://as-pect.gitbook.io/as-pect/) for AssemblyScript and [vitest](https://vitest.dev/) for testing the TypeScript code.
 
-The code can either be used on a static web page, or as a node module, and it's bundled using [vite](https://vitejs.dev/).
+The code can either be used on a static web page, or as a module, and it's bundled using [vite](https://vitejs.dev/).
 
-Assemblyscript in [`assembly/`](assembly) folder
-Typescript in [`lib/`](lib) folder
+AssemblyScript in [`assembly/`](assembly) folder
+TypeScript in [`lib/`](lib) folder
 Shared code in [`shared/`](shared) folder
 
 ## Get started
@@ -16,7 +16,7 @@ Install dependencies:
 yarn install
 ```
 
-Build the Assemblyscript code:
+Build the AssemblyScript code:
 
 ```sh
 yarn asbuild
@@ -28,8 +28,8 @@ Start the dev server
 yarn start
 ```
 
-Typescript code changes (in [`lib/`](lib) and [`shared/`](shared) folders) will be automatically reloaded on save.
-Assemblyscript changes (in [`assembly/`](assembly) and [`shared/`](shared) folders) will require a manual rebuild using `yarn asbuild`.
+TypeScript code changes (in [`lib/`](lib) and [`shared/`](shared) folders) will be automatically reloaded by the browser on save.
+AssemblyScript changes (in [`assembly/`](assembly) and [`shared/`](shared) folders) will require a manual rebuild using `yarn asbuild`.
 
 ## Development
 
@@ -59,13 +59,13 @@ yarn start
 
 ### Assembyscript
 
-Write Assemblyscript code and tests in [`assembly/`](assembly) and [`shared/`](shared) folders.
+Write AssemblyScript code and tests in [`assembly/`](assembly) and [`shared/`](shared) folders.
 
 See the note below under [Shared](#shared) regarding the [`shared/`](shared) folder.
 
 #### Test: Assembyscript
 
-To run Assemblyscript tests for the assemblyscript folder, execute one of the following:
+To run AssemblyScript tests for the AssemblyScript folder, execute one of the following:
 
 ```sh
 yarn astest
@@ -76,7 +76,7 @@ It will run tests in [`assembly/`](assembly) and [`shared/`](shared) folders usi
 
 #### Build: Assembyscript
 
-To build the assemblyscript folder, execute one of the following:
+To build the AssemblyScript folder, execute one of the following:
 
 ```sh
 yarn asbuild
@@ -85,15 +85,15 @@ yarn asbuild-watch
 
 The code will be built to the [`build/wasm/`](build/wasm) folder.
 
-### Typescript
+### TypeScript
 
-Write typescript code and tests in [`lib/`](lib) and [`shared/`](shared) folders.
+Write TypeScript code and tests in [`lib/`](lib) and [`shared/`](shared) folders.
 
 See the note below under [Shared](#shared) regarding the [`shared/`](shared) folder.
 
-#### Test: Typescript
+#### Test: TypeScript
 
-To run typescript tests for the [`lib/`](lib) folder, execute one of the following:
+To run TypeScript tests for the [`lib/`](lib) folder, execute one of the following:
 
 ```sh
 yarn libtest
@@ -103,7 +103,7 @@ yarn libtest-coverage
 
 It will run tests in [`lib/`](lib) using [vitest](https://vitest.dev/)
 
-To run typescript tests for the [`shared/`](shared) folder, execute one of the following:
+To run TypeScript tests for the [`shared/`](shared) folder, execute one of the following:
 
 ```sh
 yarn sharedtest
@@ -113,9 +113,9 @@ yarn sharedtest-coverage
 
 It will run tests in [`shared/`](shared) using [vitest](https://vitest.dev/).
 
-#### Build: Typescript
+#### Build: TypeScript
 
-To build the typescript in the [`lib/`](lib) and [`shared/`](shared) folders, execute:
+To build the TypeScript in the [`lib/`](lib) and [`shared/`](shared) folders, execute:
 
 ```sh
 yarn libbuild
@@ -125,10 +125,11 @@ The code will be built to the [`build/lib/`](build/lib) folder.
 
 ### Shared
 
-Code in [`shared/`](shared) folder is used by both Assemblyscript and Typescript . By default it only supports the basic portable types and their conversion functions like `i32` and `i32(value)`, see [as-minimal-portable](as-minimal-portable/README.md) for more details.
-See the [portability section](https://www.assemblyscript.org/compiler.html#portability) in the Assemblyscript documentation for information om how to write portable code.
+Code in [`shared/`](shared) folder is used by both AssemblyScript and TypeScript . By default it only supports the basic portable types and their conversion functions like `i32` and `i32(value)`, see [as-minimal-portable](as-minimal-portable/README.md) for more details and information on how to enable more features or switch to the full portable library.
 
-The shared folder is built and embedded in the wasm when used in the Assemblyscript code, and is converted to javascript when used in the Typescript code.
+See the [portability section](https://www.AssemblyScript.org/compiler.html#portability) in the AssemblyScript documentation for information om how to write portable code.
+
+The shared folder is built and embedded in the wasm when used in the AssemblyScript code, and is converted to javascript when used in the TypeScript code.
 
 ### Compile
 
@@ -154,16 +155,17 @@ yarn build-lib-watch
 
 #### Debug WASM vs Release WASM
 
-By default the debug version of the WASM is used.
+By default the debug version of the WASM is used when compiling and running tests.
 The version can be controlled by setting environment variable `WASM=release` or `WASM=debug`.
 
 If environment variable `NODE_ENV=production` is set, or `CI` is set, and `WASM` hasn't been set, then the release version of the WASM is automatically used.
 
 When compiling to a static web or library, the release version of the WASM is used, as vite sets `NODE_ENV=production` by default.
 
-## Optional: VS Code Setup to format Assemblyscript code
+## Optional: VS Code Setup to format AssemblyScript code
 
-Assemblyscript can be formatted using [prettier](https://prettier.io/) as long as decorators, such as `@inline`, on top level functions and variables are used. Typescript only allows them on classes and its members. This is an example that prettier can't handle:
+AssemblyScript can be formatted using [prettier](https://prettier.io/) as long as decorators, such as `@inline`, on top level functions and variables aren't used. TypeScript only allows them on classes and its members.
+This is an example that prettier can't handle:
 
 ```ts
 // @ts-ignore: decorator
@@ -173,7 +175,7 @@ export function add(a: i32, b: i32): i32 {
 }
 ```
 
-To be able to format Assemblyscript code in VS Code on save, follow these steps to install a custom formatter that tricks prettier into thinking the code is Typescript so it can format it correctly.
+To be able to format AssemblyScript code in VS Code on save, follow these steps to install a custom formatter that uses a few tricks so that prettier can format the code.
 
 - Install https://marketplace.visualstudio.com/items?itemName=jkillian.custom-local-formatters in VS Code
 
@@ -182,24 +184,24 @@ To be able to format Assemblyscript code in VS Code on save, follow these steps 
   **Yarn 1:**
 
   ```sh
-  yarn add -D prettier https://github.com/HCanber/assemblyscript-prettier
+  yarn add -D prettier https://github.com/HCanber/AssemblyScript-prettier
   ```
 
   **Yarn 2+:**
 
   ```sh
-  yarn add -D prettier assemblyscript-prettier@github:HCanber/assemblyscript-prettier
+  yarn add -D prettier AssemblyScript-prettier@github:HCanber/AssemblyScript-prettier
   ```
 
   **NPM:**
 
   ```sh
-  npm install -D prettier git+https://github.com/HCanber/assemblyscript-prettier.git
+  npm install -D prettier git+https://github.com/HCanber/AssemblyScript-prettier.git
   ```
 
 - Open [.vscode/settings.json](.vscode/settings.json) and uncomment the lines for the formatter
 
-Now when assemblyscript (and typescript) code is saved, it will be formatted using the newly installed formatter
+Now when AssemblyScript (and TypeScript) code is saved, it will be formatted using the newly installed formatter.
 
 ## Optional: Format code on commits
 
